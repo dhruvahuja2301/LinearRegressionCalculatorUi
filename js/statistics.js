@@ -2046,9 +2046,9 @@ function toggle_options() {
     GEBI("options_btn").checked ? display_blocks("options", "") : display_blocks("options", "none")
 }
 
-function toggle_options2() {
-    "More" == get_variable("more").substr(0, 4) ? (display_blocks("options", ""), set_variable("more", "Less options\t&#9650;")) : (display_blocks("options", "none"), set_variable("more", "More options &#x25BC;"))
-}
+// function toggle_options2() {
+//     "More" == get_variable("more").substr(0, 4) ? (display_blocks("options", ""), set_variable("more", "Less options\t&#9650;")) : (display_blocks("options", "none"), set_variable("more", "More options &#x25BC;"))
+// }
 
 function like() {
     return '<div class="fb-like" data-href="http://www.statskingdom.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>', '<span class="num_col">If you like the page, please share or like. Questions, comments and suggestions are appreciated. (statskingdom@gmail.com)</span><br><div class="fb-like" data-href="http://www.statskingdom.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>'

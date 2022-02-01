@@ -11,6 +11,10 @@
         background-color: #f0f0f0
     }
 
+    .hide{
+        display: none;
+    }
+
     .first_header {
         font-weight: 700;
         color: #fff;
@@ -203,7 +207,7 @@
                         class="enter">Enter</span> or comma, <span class="enter">,</span> after each value. The tool
                     ignores non-numeric cells.<br></div>
             </div><button id="more" onclick="toggle_options2()" type="button"
-                class="btn btn-more col-lg-12 mt-3 mb-0">More options &#x25BC;</button>
+                class="btn btn-more col-lg-12 mt-3 mb-0 hide">More options &#x25BC;</button>
         </form>
     </div>
     <form id="options" class="col-lg-9 py-3 mx-xl-3 mt-0 mb-0 blue_backgroud" style="display:none">
@@ -288,20 +292,20 @@
         <div id="tresults" class="col-lg-12 mx-3 my-2">
             <div class="row mb-3">
                 <div id="linear1" class="bg-light-white col-lg-6" style="min-height:300px"></div>
-                <div id="residuals" class="bg-light-white col-lg-6" style="min-height:300px"></div>
+                <div id="residuals" class="bg-light-white col-lg-6 hide" style="min-height:300px"></div>
             </div>
-            <h3 class="my-3">Interpretation of the results</h3>
-            <div class="row mb-3 p-3">
+            <h3 class="my-3 hide">Interpretation of the results</h3>
+            <div class="row mb-3 p-3 hide">
                 <div id="gauge1"></div>
                 <div id="gauge2"></div>
                 <div id="gauge3"></div>
                 <div id="gauge4"></div>
                 <div id="gauge5"></div>
-            </div>
-            <h4 class="my-3">Regression ANOVA</h4>
-            <p>Hover over the cells to see the formulas.
-            <div id="anova1" class="row"></div>
-            <div class="row">
+            </div> 
+            <h4 class="my-3 hide">Regression ANOVA</h4>
+            <p class="hide">Hover over the cells to see the formulas.
+            <div id="anova1" class=" hide row"></div>
+            <div class="row hide">
                 <div id="message" class="blue_backgroud col-lg-8 p-3" style="min-height:300px"></div>
                 <div id="Distribution1" class="bg-light-white col-lg-4" style="min-height:300px"></div><select
                     onchange='rerun_after(),GEBI("distribution1").scrollIntoView()' class="form-control"
@@ -311,12 +315,12 @@
                     <option value="both">Both
                 </select>
             </div>
-            <h4 class="my-3">Residuals normality</h4>
-            <div class="row">
+            <h4 class="my-3 hide">Residuals normality</h4>
+            <div class="row hide">
                 <div id="Histogram1" class="bg-light-white col-lg-6" style="min-height:300px"></div>
                 <div id="curve_chart3" class="bg-light-white col-lg-6" style="min-height:300px"></div>
-            </div>
-            <div id="calculation1" class="row" style="display:none">
+            </div> 
+            <div id="calculation1" class="row hide" style="display:none">
                 <h4 class="col-lg-8 my-3 ml-0">Calculation</h4>
                 <div id="step_message" class="col-lg-8 ml-2 mb-3"></div>
                 <div id="stable1" class="col-lg-8 p-0"></div>
