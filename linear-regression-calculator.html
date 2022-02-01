@@ -1,0 +1,415 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .empty_cell,
+    .grey_backgroud,
+    body {
+        background-color: #f0f0f0
+    }
+
+    .first_header {
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        font-size: 48px;
+        background-color: #003459;
+        width: 100%;
+        font-family: serif;
+        margin-bottom: 0
+    }
+
+    .n_h1 {
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 1.7
+    }
+
+    .font_Webroboto {
+        font-family: WebRoboto, "Times New Roman", Times, serif
+    }
+
+    .grey_backgroud2 {
+        background-color: #e7e7e8;
+        border: 1px solid #dadcde
+    }
+
+    .white_backgroud {
+        background-color: #fff
+    }
+
+    .blue_backgroud {
+        background-color: #fbfcfc;
+        border: 1px solid #c4d6e8
+    }
+
+    .blue_backgroud2 {
+        background-color: #f6f9fc;
+        border: 1px solid #c4d6e8
+    }
+
+    .green_backgroud {
+        background-color: #f5fffa;
+        border: 1px solid #cef2e0
+    }
+
+    .red,
+    .red1 {
+        color: red
+    }
+
+    .yellow1 {
+        color: #bb8d26
+    }
+
+    .green1 {
+        color: green
+    }
+
+    .num_col {
+        color: #bf344e;
+        font-weight: 700
+    }
+
+    .bg-primary-white {
+        background-color: #bfdcff;
+        color: #000;
+        border: 1px solid #0052ab;
+        border-color: #8484e4;
+        border-radius: .25rem
+    }
+
+    .bg-light-white {
+        background-color: #fff;
+        color: grey;
+        border: 1px solid #d3d3d3
+    }
+
+    .btn-more {
+        color: #212529;
+        background-color: #ebf1fa;
+        border-color: #ebf1fa
+    }
+
+    .btn-more:hover {
+        color: #212529;
+        background-color: #e2e6ea;
+        border-color: #dae0e5
+    }
+
+    .enter {
+        border: 1px solid #000;
+        font-size: 12px;
+        padding: 1px 2px;
+        background-color: #d3d3d3;
+        color: #00008b
+    }
+
+    .overflow_bw {
+        overflow-wrap: break-word;
+        white-space: pre-wrap !important
+    }
+
+    textarea {
+        resize: none;
+        overflow-x: hidden
+    }
+
+    .tab {
+        overflow: hidden;
+        padding: 0;
+        border: 1px solid #ccc;
+        background-color: #337ab7
+    }
+
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: 0;
+        cursor: pointer;
+        padding: 14px 16px
+    }
+
+    .tab button.active {
+        background-color: #000095
+    }
+
+    .tab button {
+        background-color: #337ab7;
+        color: #fff
+    }
+
+    .tab button:hover {
+        background-color: #0000b0;
+        color: #fff
+    }
+
+    .pad,
+    .tabcontent {
+        padding-top: 15px
+    }
+
+    @media only screen and (max-width:800px) {
+        .first_header {
+            font-size: 30px
+        }
+
+        .n_h1 {
+            font-size: 1.4rem
+        }
+    }
+</style>
+<title>Linear regression calculator</title>
+<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script defer="defer" src="js/linear_regression.js"></script>
+<script defer="defer" src="js/statistics.js"></script>
+<script defer="defer" src="https://www.gstatic.com/charts/loader.js"></script>
+<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.7.1/jstat.js"></script>
+<div id="wrapper" class="p-3 grey_backgroud">
+    <div id="top_block" class="container-fluid grey_backgroud">
+        <h1 class="n_h1 mt-2">Linear Regression Calculator</h1>
+    </div>
+    <div class="">
+        <form class="col-lg-9 p-2 mx-xl-3 mt-0 mb-0 blue_backgroud">
+            <div class="row">
+                <div class="table-responsive-sm">
+                    <table id="tab1" class="table1 mx-sm-4 mt-sm-2">
+                        <tr class="">
+                            <th><textarea class="form-control bg-primary-white" rows="1" id="h0">X</textarea>
+                            <th><textarea class="form-control bg-primary-white" rows="1" id="h1">Y</textarea>
+                            <th><textarea class="form-control bg-primary-white" style="display:none" rows="1"
+                                    id="h2">Ŷ (Predicted Y)</textarea>
+                            <th><textarea class="form-control bg-primary-white" style="display:none" rows="1"
+                                    id="h3">Residual</textarea>
+                        <tr>
+                            <td><textarea class="form-control" rows="16" id="c0"></textarea>
+                            <td><textarea class="form-control" rows="16" id="c1"></textarea>
+                            <td><textarea class="form-control" style="display:none" rows="16" id="c2"
+                                    readonly="readonly"></textarea>
+                            <td><textarea class="form-control" style="display:none" rows="16" id="c3"
+                                    readonly="readonly"></textarea>
+                    </table>
+                </div>
+                <div id="remark" class="col-lg-12 mt-3">You may change the X and Y labels. Separate data by <span
+                        class="enter">Enter</span> or comma, <span class="enter">,</span> after each value. The tool
+                    ignores non-numeric cells.<br></div>
+            </div><button id="more" onclick="toggle_options2()" type="button"
+                class="btn btn-more col-lg-12 mt-3 mb-0">More options &#x25BC;</button>
+        </form>
+    </div>
+    <form id="options" class="col-lg-9 py-3 mx-xl-3 mt-0 mb-0 blue_backgroud" style="display:none">
+        <div class="row p-1">
+            <div class="form-group col-md-6"><label for="alpha"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true"
+                        title="Significance level (0-1), maximum chance allowed rejecting H<sub>0</sub> while H<sub>0</sub> is correct (Type1 Error)"><span
+                            class="text-info">Significance level (&alpha;):</span></span></label> <input
+                    class="form-control" value="0.05" id="alpha"></div>
+            <div class="form-group col-md-6"><label for="size"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true"
+                        title="When you choose the <b>Effect</b> the tool determines the <b>Effect type</b> and the <b>Effect size</b>. Ignore this field if you know the required <b>Effect type</b> and the <b>Effect size</b>. If you do not know what to do, use <b>Medium effect</b>"><span
+                            class="text-info">Effect:</span></span></label> <select id="size"
+                    onchange='choose_effect("regression")' class="form-control">
+                    <option value="small">Small
+                    <option value="medium" selected="selected">Medium
+                    <option value="large">Large
+                </select></div>
+            <div class="form-group col-md-6"><label for="change_type"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true"
+                        title="The expected effect type - <b>f</b><sup>2</sup> or <b>R<sup>2</sup></b> .<br> Plan a test that will be able to identify this effect. If one exists, the test should reject the null hypothesis."><span
+                            class="text-info">Effect type:</span></span></label> <select id="change_type"
+                    class="form-control">
+                    <option value="f" selected="selected">f
+                    <option value="f2">f2
+                    <option value="r2">R²
+                </select></div>
+            <div class="form-group col-md-6"><label for="change"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true"
+                        title="The expected effect that the test should detect. <span class= &#39;text-danger&#39; >Any change in <b>Effect</b> field will change this value!</span><br /> You may override this value."><span
+                            class="text-info">Effect size:</span></span></label> <input class="form-control"
+                    value="0.39" id="change"></div>
+            <div class="form-group col-md-6"><label for="k"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true" title=""
+                        data-original-title="Z-score: usually we use k=<span class=&quot;red&quot;>3</span>, allowing three standard deviations from the average"><span
+                            class="text-info">k (residual outliers):</span></span></label> <input class="form-control"
+                    value="3" id="k"></div>
+            <div class="form-group col-md-6"><label for="digits"><span class="d-inline-block" tabindex="0"
+                        data-toggle="tooltip" data-html="true" title="Example digits=2: (0.001234 => 0.0012)"><span
+                            class="text-info">Digits:</span></span></label> <select class="form-control" id="digits">
+                    <option value="1">1
+                    <option value="2">2
+                    <option value="3">3
+                    <option selected="selected" value="4">4
+                    <option value="5">5
+                    <option value="6">6
+                    <option value="7">7
+                    <option value="8">8
+                    <option value="9">9
+                    <option value="10">10
+                </select></div>
+            <div class="form-group row col-lg-6 mt-3">
+                <div class="custom-control custom-switch ml-3"><input type="checkbox" class="custom-control-input"
+                        id="force_zero"> <label class="custom-control-label" for="force_zero"><b>Constant is zero
+                        </b><span class="pc">, force zero Y-intercept, b<sub>0</sub>=0</span>.</label></div>
+            </div>
+            <div class="form-group row col-lg-6 ml-3 mt-3">
+                <div class="custom-control custom-switch ml-3"><input type="checkbox" checked
+                        class="custom-control-input" id="add_trend"> <label class="custom-control-label"
+                        for="add_trend"><b>Trend Line</b><span class="pc">, Line fit plot</span>.</label></div>
+            </div>
+            <div class="form-group row col-lg-10">
+                <div class="custom-control custom-switch ml-3"><input type="checkbox" class="custom-control-input"
+                        id="steps" checked="checked"> <label class="custom-control-label" for="steps">Step by
+                        step</label></div>
+            </div>
+        </div>
+    </form>
+    <div class="row ml-2 mt-3"><button id="manual" onclick="calculate_simple_regression()" type="button"
+            class="btn btn-primary m-2">Calculate</button> <button id="delete2"
+            onclick='delete_list("c0,c1"),display_blocks("results,results2,h2,h3,c2,c3","none")' type="button"
+            class="btn btn-secondary m-2">Clear</button> <button onclick="load1()" type="button"
+            class="btn btn-outline-info float-right m-2">Load example</button> <button
+            onclick='get_local_list("400","k,add_trend,alpha,change,digits,use_alpha,steps,c0,c1,h0,h1","")'
+            type="button" class="btn btn-outline-info float-right m-2">Load last run</button></div>
+    <div id="results2" class="mx-1" style="display:none">
+        <h4 id="start" class="mt-3">Regression line equation</h4>
+        <div id="formula1" class="h2 px-3 mt-4" style="font-family:WebRoboto"></div>
+        <h4 id="start" class="my-3">Reporting linear regression in APA style</h4>
+        <div id="report1" class="px-3 mb-3 mt-4 text-success"></div>
+        <h4 class="mt-0">Regression line</h4>
+        <div id="tresults" class="col-lg-12 mx-3 my-2">
+            <div class="row mb-3">
+                <div id="linear1" class="bg-light-white col-lg-6" style="min-height:300px"></div>
+                <div id="residuals" class="bg-light-white col-lg-6" style="min-height:300px"></div>
+            </div>
+            <h3 class="my-3">Interpretation of the results</h3>
+            <div class="row mb-3 p-3">
+                <div id="gauge1"></div>
+                <div id="gauge2"></div>
+                <div id="gauge3"></div>
+                <div id="gauge4"></div>
+                <div id="gauge5"></div>
+            </div>
+            <h4 class="my-3">Regression ANOVA</h4>
+            <p>Hover over the cells to see the formulas.
+            <div id="anova1" class="row"></div>
+            <div class="row">
+                <div id="message" class="blue_backgroud col-lg-8 p-3" style="min-height:300px"></div>
+                <div id="Distribution1" class="bg-light-white col-lg-4" style="min-height:300px"></div><select
+                    onchange='rerun_after(),GEBI("distribution1").scrollIntoView()' class="form-control"
+                    style="background-color:#e8eaee" id="use_alpha">
+                    <option selected="selected" value="alpha">Significance level (α)
+                    <option value="pvalue">P-value
+                    <option value="both">Both
+                </select>
+            </div>
+            <h4 class="my-3">Residuals normality</h4>
+            <div class="row">
+                <div id="Histogram1" class="bg-light-white col-lg-6" style="min-height:300px"></div>
+                <div id="curve_chart3" class="bg-light-white col-lg-6" style="min-height:300px"></div>
+            </div>
+            <div id="calculation1" class="row" style="display:none">
+                <h4 class="col-lg-8 my-3 ml-0">Calculation</h4>
+                <div id="step_message" class="col-lg-8 ml-2 mb-3"></div>
+                <div id="stable1" class="col-lg-8 p-0"></div>
+            </div>
+        </div>
+    </div>
+    <div id="info" class="col-lg-9 grey_backgroud2 mx-3 row my-5 p-3">
+        <div>
+            <h2>Information</h2>
+            <p>The linear regression calculator generates the linear regression equation, draws a linear regression
+                line, a histogram, a residuals QQ-plot, a residuals x-plot, and a distribution chart.<br>It calculates
+                the R square, the R, and the outliers,
+                then it tests the fit of the linear model to the data and checks the residuals' normality assumption and
+                the priori power.
+            <h3>What is linear regression?</h3>
+            <p>The linear regression is the linear equation that best fits the points.<br>There is no one way to choose
+                the best fit ting line, the most common one is the ordinary least squares (OLS). The linear regression
+                describes the relationship
+                between the dependent variable (Y) and the independent variables (X).<br>The linear regression model
+                calculates the dependent variable (DV) based on the independent variables (IV, predictors).
+            <h3>What is "ordinary least squares"?</h3>
+            <p>The ordinary least squares method chooses the line parameters that minimize the sum of squares of the
+                differences between the observed dependent variables (Y) and the estimated value by the linear
+                regression (Ŷ).
+            <h3>Why do you need the linear regression?</h3>We may use the linear regression when we want to do one of
+            the following
+            <ul>
+                <li>Predict the dependent variable (Ŷ)
+                <li>Estimate the effect of each independent variable (X) on the dependent variable (Y)
+                <li>Calculate the correlation between the dependent variable and the independent variables.
+                <li>Test the linear model significance level.
+            </ul>
+            <h3>How to calculate linear regression?</h3>Following the linear regression formula:
+            <div class="h3 my-3 font_Webroboto">Ŷ = b<sub>0</sub> +b<sub>1</sub>x<br></div>b<sub>0</sub> - the
+            y-intercept, where the line crosses the y-axis.<br>b<sub>1</sub> - the slope, describes the line's direction
+            and incline.
+            <table class="my-3 h5 font_Webroboto">
+                <tr>
+                    <td class="text-center" rowspan="2">b<sub>1</sub> =
+                    <td class="border-bottom border-dark">SP<sub>xy</sub>
+                    <td class="text-center" rowspan="2">=
+                    <td class="border-bottom border-dark">Σ(x<sub>i</sub>-x̄)(y<sub>i</sub>-ȳ)
+                <tr>
+                    <td class="text-center">SS<sub>x</sub>
+                    <td class="text-center">Σ(x<sub>i</sub>-x̄)<sup>2</sup>
+            </table><span class="h5 font_Webroboto">b<sub>0</sub> = ȳ - b<sub>1</sub>x̄<br><br></span>
+            <h3>How to calculate R squares?</h3>R squares is the percentage of the variance explain by the regression
+            (SS<sub>Regression</sub>) from the overall variance (SS<sub>Total</sub>).
+            <table>
+                <tr>
+                    <td class="text-center" rowspan="2">R<sup>2</sup> =
+                    <td class="border-bottom border-dark">SS<sub>Regression</sub>
+                <tr>
+                    <td class="text-center">SS<sub>Total</sub>
+            </table>
+            <h3>Hypotheses Testing</h3>
+            <div id="middle_block" class="container-fluid grey_backgroud mt-3">
+                <div class="row mb-1">
+                    <div id="hypotheses" class="col-md-3 blue_backgroud padding_form py-3"><span
+                            class="h3">Hypotheses</span><br>
+                        <div class="mt-3 h4" data-toggle="tooltip" data-placement="top"
+                            title="H0 is the null hypothesis; it is the default assumption based on knowledge or logic.">
+                            H<sub>0</sub>: Y = b<sub>0</sub></div>
+                        <div class="h4" data-toggle="tooltip" data-placement="top"
+                            title="H1 is the alternative hypothesis; the opposite of the default assumption.">
+                            H<sub>1</sub>: Y = b<sub>0</sub>+b<sub>1</sub>X</div>
+                    </div>
+                    <div id="statistic" class="col-md-3 blue_backgroud padding_form py-3"><span class="h3 mb-3">Test
+                            statistic</span><br>
+                        <table class="h4 mt-3">
+                            <tr>
+                                <td class="text-center" rowspan="2">F =
+                                <td class="border-bottom border-dark">MS(regression)
+                            <tr>
+                                <td class="text-center">MS (residulas)
+                        </table>
+                    </div>
+                    <div id="distribution" class="col-xl-6 blue_backgroud padding_form py-3"><span class="h3">F
+                            distribution</span><br>
+                        <div class="mt-3"><img height="213" width="407" loading="lazy" id="Dist_t3"
+                                alt="F distribution right tailed" onmouseover='this.style.cursor="pointer"'
+                                src="images/F1_t3.jpg" onclick="window.open(this.src)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
