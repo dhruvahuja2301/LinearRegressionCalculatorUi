@@ -24,7 +24,7 @@ function calculate_simple_regression() {
         h = get_variable("change"),
         c = get_variable("change_type"),
         g = get_variable("digits");
-    input1 = get_columns("tab1", 0, 1), (r = input1.table)[0].length != r[1].length && alert("Please enter equal number of X's and Y's. You entered X:" + r[0].length + ", Y:" + r[1].length), n ? display_blocks("calculation1", "none") : display_blocks("calculation1", "none");
+    input1 = get_columns("tab1", 0, 1), (r = input1.table)[0].length != r[1].length && alert("Please enter equal number of X's and Y's. You entered X:" + r[0].length + ", Y:" + r[1].length);
     var _, v = pure_simple_regression(r, d, u, g, o),
         m = v.anova,
         f = v.test;
